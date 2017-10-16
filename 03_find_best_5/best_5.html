@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<style type="text/css">
+<!--
+body {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px
+}
+@font-face {
+    font-family: 'consola';
+    src: url('consola.ttf');
+}
+-->
+</style>
+
+<html>
+<body>
+<script>
+window.onload = function() {
+}
+
+function copy_array(array) {
+	var new_array = [];
+	for (var i in array) {
+		new_array.push(array[i]);
+	}
+	return new_array;
+}
+
+function fit(a, b) {
+	while (a >= b) {
+		a = a - b;
+	}
+	while (a < 0) {
+		a = a + b;
+	}
+	return a;
+}
+
+function find(array, depth, current, candidate) {
+	var new_array;
+	var i;
+	var cont = false;
+	var new_array;
+	var new_candidate;
+	for (i in array) {
+		cont = cont || array[i];
+	}
+	if (!cont) {
+		console.log(candidate);
+		return depth;
+	}
+	while (current < array.length) {
+		if (array[current]) {
+			new_array = copy_array(array);
+			new_array[fit(current, 12)] = false;
+			new_array[fit(current + 6, 12)] = false;
+			new_array[fit(current + 1, 12)] = false;
+			new_array[fit(current - 1, 12)] = false;
+			new_candidate = copy_array(candidate);
+			new_candidate.push(current);
+			find(new_array, depth + 1, current + 2, new_candidate)
+		}
+		current = current + 1;
+	}
+}
+
+find([true, true, true, true, true, true, true, true, true, true, true, true], 0, 0, []);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<style type="text/css">
+<!--
+body {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px
+}
+@font-face {
+    font-family: 'consola';
+    src: url('consola.ttf');
+}
+-->
+</style>
+
+<html>
+<body>
+<script type="text/javascript" src="entropy.js"></script>
+<script type="text/javascript" src="plot.js"></script>
+<script type="text/javascript" src="colorhandler.js"></script>
+<script type="text/javascript" src="apply.js"></script>
+<script type="text/javascript" src="makesound.js"></script>
+<canvas id="Canvas" width="1200" height="600" style="position:absolute; top:0;left:0 border:1px solid #d3d3d3;"></canvas>
+<script>
+window.onload = function() {
+	Plot.init(document.getElementById("Canvas"));
+	/*
+	var sigma = 0.02;
+	var nodes = EntropyCalculator.create_nodes(20, 4);
+	// var data = EntropyCalculator.sample_data(nodes, 1001, sigma);
+	var data = EntropyCalculator.sample_data_2(nodes, 601, sigma, [MC, MG], 220, 440); // 235.246
+
+	Plot.clean();
+	Plot.draw_grid(12);
+	Plot.draw_2d(data);
+	*/
+	
+	SoundMaker.init();
+	Generator.main();
+}
+</script>
+
+</body>
+</html>

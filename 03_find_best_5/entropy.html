@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<style type="text/css">
+<!--
+body {
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px
+}
+@font-face {
+    font-family: 'consola';
+    src: url('consola.ttf');
+}
+-->
+</style>
+
+<html>
+<body>
+<script>
+window.onload = function() {
+}
+
+function copy_array(array) {
+	var new_array = [];
+	for (var i in array) {
+		new_array.push(array[i]);
+	}
+	return new_array;
+}
+
+function fit(a, b) {
+	while (a >= b) {
+		a = a - b;
+	}
+	while (a < 0) {
+		a = a + b;
+	}
+	return a;
+}
+
+function log(base, num) {
+	return Math.log(num) / Math.log(base);
+}
+
+function entrophy(array) {
+	var i;
+	var sum = 0;
+	array = copy_array(array);
+	
+	for (i in array) {
+		sum = sum + array[i];
+	}
+	for (i in array) {
+		array[i] = array[i] / sum;
+	}
+	sum = 0;
+	for (i in array) {
+		sum = sum + (array[i] * log(array.length, array[i]));
+	}
+	return sum * (-1);
+}
+
+console.log(entrophy([1, 1]) / Math.sqrt(1 * 1));
+console.log(entrophy([1, 2]) / Math.sqrt(1 * 2));
+console.log(entrophy([2, 3]) / Math.sqrt(2 * 3));
+console.log(entrophy([3, 4]) / Math.sqrt(3 * 4));
+</script>
+
+</body>
+</html>
